@@ -1,4 +1,6 @@
-name: Run Tests
+# Local file to test ci with act
+
+name: CI Local
 
 on:
   push:
@@ -20,7 +22,6 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [20.x, 22.x, 24.x]
-        os: [macos-latest, ubuntu-latest, windows-latest]
         include:
           - node-version: 20.x
             test-command: ci:v20
@@ -28,8 +29,8 @@ jobs:
             test-command: test-ci
           - node-version: 24.x
             test-command: test-ci
-    name: 'Node.js ${{ matrix.node-version }} / ${{ matrix.os }}'
-    runs-on: ${{ matrix.os }}
+    name: 'Node.js ${{ matrix.node-version }}'
+    runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - name: Checkout

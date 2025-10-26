@@ -19,6 +19,7 @@
     "test": "npm run lint && npm run typecheck && node --experimental-strip-types --test --test-concurrency=1 'test/**/*.test.ts'",
     "test-only": "node --experimental-strip-types --test --test-concurrency=1 'test/**/*.test.ts'",
     "test-ci": "npm run lint && npm run typecheck && c8 --reporter=lcovonly node --experimental-strip-types --test --test-concurrency=1 'test/**/*.test.ts'",
+    "ci:v20": "npm run lint && npm run typecheck && rm -rf dist && tsc -p tsconfig.json && c8 --reporter=lcovonly node --test --test-concurrency=1 dist/test/*.test.js dist/test/lib/*.test.js",
     "prepublishOnly": "npm run build && npm run lint"
   },
   "repository": {
